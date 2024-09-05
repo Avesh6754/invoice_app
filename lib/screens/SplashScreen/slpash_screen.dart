@@ -12,11 +12,13 @@ class SlpashScreen extends StatefulWidget {
 class _SlpashScreenState extends State<SlpashScreen> {
   @override
   Widget build(BuildContext context) {
-    Timer.periodic(Duration(seconds: 3), (timer) {
-      Navigator.of(context).pushReplacementNamed('/home');
-    },);
+    Timer.periodic(
+      Duration(seconds: 3),
+      (timer) {
+        Navigator.of(context).pushReplacementNamed('/home');
+      },
+    );
     return Scaffold(
-
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,11 +26,17 @@ class _SlpashScreenState extends State<SlpashScreen> {
             Container(
               height: 150,
               width: 150,
-              decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/image/logo.png'))
-              ),
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/image/logo.png'))),
             ),
-            Text("Invoice App",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40,color: Colors.blue),)
+            const Text(
+              "Invoice App",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                  color: Colors.blue),
+            )
           ],
         ),
       ),

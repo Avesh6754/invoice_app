@@ -255,3 +255,16 @@ List productList = [
     "imge": "assets/image/02.png",
   },
 ];
+
+//business page
+
+TextEditingController txtBusinessname=TextEditingController();
+TextEditingController txtYourName=TextEditingController();
+TextEditingController txtGst=TextEditingController();
+TextEditingController txtBusinessLoaction=TextEditingController(text: 'India');
+TextEditingController txtDatefounder=TextEditingController();
+TextEditingController txtAddress=TextEditingController();
+TextEditingController txtCity=TextEditingController();
+TextEditingController txtState=TextEditingController();
+TextEditingController txtZipcode=TextEditingController();
+
