@@ -1,7 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:invoice_app/model/product_data.dart';
+import 'package:invoice_app/model/product_list.dart';
 import 'package:invoice_app/screens/Business_Page/component/businessText.dart';
 import 'package:invoice_app/utils/color.dart';
 import 'package:invoice_app/utils/global.dart';
+
+import 'component/cutomer_Details.dart';
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({super.key});
@@ -11,6 +17,14 @@ class CustomerPage extends StatefulWidget {
 }
 
 class _CustomerPageState extends State<CustomerPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    invoiceProduct = product_list.map((e) => Invoice.fromMap(e)).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,22 +42,24 @@ class _CustomerPageState extends State<CustomerPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Spacer(),
-                const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'New Invoice',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                    Text(
-                      '      Fill in the required details\nto generate and share this invoice',
-                      style: TextStyle(fontSize: 14, color: offlabel),
-                    )
-                  ],
+                SingleChildScrollView(
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'New Invoice',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
+                      Text(
+                        '      Fill in the required details\nto generate and share this invoice',
+                        style: TextStyle(fontSize: 14, color: offlabel),
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   width: 30,
@@ -73,22 +89,16 @@ class _CustomerPageState extends State<CustomerPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                          setState(() {
-                            showModalBottomSheet(context: context, builder:(BuildContext context){
-
-                              return SizedBox(
-                                child: Center(
-                                child: Column(
-                                  children: [
-                                
-                                
-                                
-                                  ],
-                                ),
-                                                                ),
-                              );
+                            setState(() {
+                              showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (BuildContext context) {
+                                    return SizedBox(
+                                      child: customerDetails(context),
+                                    );
+                                  });
                             });
-                          });
                           },
                           child: Container(
                             height: 50,
@@ -100,8 +110,7 @@ class _CustomerPageState extends State<CustomerPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 IconButton(
-                                  onPressed: () {
-                                  },
+                                  onPressed: () {},
                                   icon: const Icon(
                                     Icons.add_circle,
                                     color: button,
@@ -128,21 +137,59 @@ class _CustomerPageState extends State<CustomerPage> {
                         SizedBox(
                           height: 10,
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                                child: inputTextField(
-                                    txtcontoller: txtinvoice,
-                                    isAddress: false)),
-                            SizedBox(
-                              width: 20,
+                        Row(children: [
+                          Expanded(
+                              child: GestureDetector(
+                            onTap: () {
+                              setState(() async {
+                                DateTime? dateTime = await showDatePicker(
+                                    context: context,
+                                    firstDate: DateTime(1990),
+                                    lastDate: DateTime(2100),
+                                    initialDate: DateTime.now());
+                                if (dateTime != null) {
+                                  var datebirth =
+                                      '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+                                  txtinvoice.text = datebirth;
+                                }
+                              });
+                            },
+                            child: AbsorbPointer(
+                              absorbing: true,
+                              child: inputTextField(
+                                  txtcontoller: txtinvoice,
+                                  isAddress: false,
+                                  hint: '10/05/2023'),
                             ),
-                            Expanded(
-                                child: inputTextField(
-                                    txtcontoller: txtDueDate,
-                                    isAddress: false)),
-                          ],
-                        ),
+                          )),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                                onTap: () {
+                                  setState(() async {
+                                    DateTime? dateTime = await showDatePicker(
+                                        context: context,
+                                        firstDate: DateTime(1990),
+                                        lastDate: DateTime(2100),
+                                        initialDate: DateTime.now());
+                                    if (dateTime != null) {
+                                      var datebirth =
+                                          '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+                                      txtDueDate.text = datebirth;
+                                    }
+                                  });
+                                },
+                                child: AbsorbPointer(
+                                  absorbing: true,
+                                  child: inputTextField(
+                                      txtcontoller: txtDueDate,
+                                      isAddress: false,
+                                      hint: '05/10/2024'),
+                                )),
+                          )
+                        ]),
                         SizedBox(
                           height: 15,
                         ),
@@ -150,7 +197,7 @@ class _CustomerPageState extends State<CustomerPage> {
                           children: [
                             Expanded(
                                 child: labelText_Box(name: "Invoice Number")),
-                            Expanded(child: labelText_Box(name: "  Due Date")),
+                            Expanded(child: labelText_Box(name: " Currency")),
                           ],
                         ),
                         SizedBox(
@@ -160,15 +207,17 @@ class _CustomerPageState extends State<CustomerPage> {
                           children: [
                             Expanded(
                                 child: inputTextField(
-                                    txtcontoller: txtinvoice,
-                                    isAddress: false)),
+                                    txtcontoller: txtInvoiceNumber,
+                                    isAddress: false,
+                                    hint: 'INV001')),
                             SizedBox(
                               width: 20,
                             ),
                             Expanded(
                                 child: inputTextField(
-                                    txtcontoller: txtDueDate,
-                                    isAddress: false)),
+                                    txtcontoller: txtCurrency,
+                                    isAddress: false,
+                                    hint: 'INR')),
                           ],
                         ),
                         SizedBox(
@@ -178,27 +227,66 @@ class _CustomerPageState extends State<CustomerPage> {
                         SizedBox(
                           height: 10,
                         ),
-                        Container(
-                          height: 50,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: defaultbutton),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.add_circle,
-                                  color: button,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.red,
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return SizedBox(
+                                      child: Column(
+                                        children: [
+                                          // ListView.builder(
+                                          //   itemBuilder: (context, index) =>
+                                          //       Card(
+                                          //     child: ListTile(
+                                          //       leading: Image.asset(
+                                          //           '${invoiceProduct[index].pro_Image}'),
+                                          //       title: Text(
+                                          //           "Name ${invoiceProduct[index].pro_title}"),
+                                          //       trailing: IconButton(
+                                          //           onPressed: () {
+                                          //             setState(() {
+                                          //               invoicecart.add(
+                                          //                   invoiceProduct[
+                                          //                       index]);
+                                          //             });
+                                          //           },
+                                          //           icon: Icon(Icons
+                                          //               .shopping_cart_checkout)),
+                                          //     ),
+                                          //   ),
+                                          // )
+                                        ],
+                                      ),
+                                    );
+                                  });
+                            });
+                          },
+                          child: Container(
+                            height: 50,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: defaultbutton),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.add_circle,
+                                    color: button,
+                                  ),
                                 ),
-                              ),
-                              const Text(
-                                "Add item Details",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                                const Text(
+                                  "Add item Details",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -208,7 +296,10 @@ class _CustomerPageState extends State<CustomerPage> {
                         SizedBox(
                           height: 10,
                         ),
-                        inputTextField(txtcontoller: txtnote, isAddress: true),
+                        inputTextField(
+                            txtcontoller: txtnote,
+                            isAddress: true,
+                            hint: 'I am glad to work with you'),
                         SizedBox(
                           height: 15,
                         ),
@@ -216,7 +307,10 @@ class _CustomerPageState extends State<CustomerPage> {
                         SizedBox(
                           height: 10,
                         ),
-                        inputTextField(txtcontoller: txtTerms, isAddress: true)
+                        inputTextField(
+                            txtcontoller: txtTerms,
+                            isAddress: true,
+                            hint: 'Complete the all bill on time')
                       ],
                     ),
                   ),

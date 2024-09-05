@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app/utils/color.dart';
-TextField inputTextField({required TextEditingController txtcontoller,required bool isAddress}) {
+
+TextField inputTextField(
+    {required TextEditingController txtcontoller, required bool isAddress,required String hint}) {
   return TextField(
     controller: txtcontoller,
-    maxLines: (isAddress)?3:1,
+    maxLines: (isAddress) ? 3 : 1,
+
     decoration: InputDecoration(
+      hintText: '$hint',
+      hintStyle: TextStyle(color: Colors.grey.shade400
+      ),
       border: OutlineInputBorder(),
       enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey.shade500, width: 1.2),
@@ -17,9 +23,7 @@ TextField inputTextField({required TextEditingController txtcontoller,required b
 }
 
 Text labelText_Box({required String name}) => Text(
-  "$name",
-  style: TextStyle(
-      fontWeight: FontWeight.w500,
-      fontSize: 15,
-      color: offlabel),
-);
+      "$name",
+      style:
+          TextStyle(fontWeight: FontWeight.w500, fontSize: 15, color: offlabel),
+    );
