@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_app/screens/Business_Page/businesspage.dart';
+import 'package:invoice_app/screens/Cutomer_Page/customer_Page.dart';
+
+import '../screens/SplashScreen/slpash_screen.dart';
 
 List productList = [
   {
@@ -267,4 +271,22 @@ TextEditingController txtAddress=TextEditingController();
 TextEditingController txtCity=TextEditingController();
 TextEditingController txtState=TextEditingController();
 TextEditingController txtZipcode=TextEditingController();
+
+
+TextEditingController txtcustomer=TextEditingController();
+TextEditingController txtinvoice=TextEditingController();
+TextEditingController txtDueDate=TextEditingController();
+TextEditingController txtInvoiceNumber=TextEditingController();
+TextEditingController txtCurrency=TextEditingController();
+TextEditingController txtnote=TextEditingController();
+TextEditingController txtTerms=TextEditingController();
+
+//bottom
+var myindex=0;
+
+List<Widget> screenlist=[
+ CustomerPage(),
+  Businesspage(),
+  SlpashScreen(),
+];
 

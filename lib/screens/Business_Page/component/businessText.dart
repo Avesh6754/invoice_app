@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-TextField inputTextField({required TextEditingController txtcontoller}) {
+import 'package:invoice_app/utils/color.dart';
+TextField inputTextField({required TextEditingController txtcontoller,required bool isAddress}) {
   return TextField(
     controller: txtcontoller,
+    maxLines: (isAddress)?3:1,
     decoration: InputDecoration(
       border: OutlineInputBorder(),
       enabledBorder: OutlineInputBorder(
@@ -19,5 +21,5 @@ Text labelText_Box({required String name}) => Text(
   style: TextStyle(
       fontWeight: FontWeight.w500,
       fontSize: 15,
-      color: Colors.grey.shade700),
+      color: offlabel),
 );

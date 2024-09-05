@@ -42,15 +42,15 @@ class _BusinesspageState extends State<Businesspage> {
             ),
             Row(
               children: [
-                Expanded(child: inputTextField(txtcontoller: txtBusinessname)),
+                Expanded(child: inputTextField(txtcontoller: txtBusinessname,isAddress: false)),
                 const SizedBox(
                   width: 20,
                 ),
-                Expanded(child: inputTextField(txtcontoller: txtYourName)),
+                Expanded(child: inputTextField(txtcontoller: txtYourName,isAddress: false)),
               ],
             ),
             SizedBox(
-              height: 25,
+              height: 13,
             ),
             Row(
               children: [
@@ -63,32 +63,32 @@ class _BusinesspageState extends State<Businesspage> {
             ),
             Row(
               children: [
-                Expanded(child: inputTextField(txtcontoller: txtGst)),
+                Expanded(child: inputTextField(txtcontoller: txtGst,isAddress: false)),
                 const SizedBox(
                   width: 20,
                 ),
                 Expanded(
-                    child: inputTextField(txtcontoller: txtBusinessLoaction)),
+                    child: inputTextField(txtcontoller: txtBusinessLoaction,isAddress: false)),
               ],
             ),
             const SizedBox(
-              height: 25,
+              height: 13,
             ),
             labelText_Box(name: "Date of Foundation"),
             const SizedBox(
               height: 10,
             ),
-            inputTextField(txtcontoller: txtDatefounder),
+            inputTextField(txtcontoller: txtDatefounder,isAddress: false),
             const SizedBox(
-              height: 25,
+              height: 13,
             ),
             labelText_Box(name: "Address line"),
             const SizedBox(
               height: 10,
             ),
-            inputTextField(txtcontoller: txtAddress),
+            inputTextField(txtcontoller: txtAddress,isAddress: false),
             SizedBox(
-              height: 25,
+              height: 13,
             ),
             Row(
               children: [
@@ -101,21 +101,21 @@ class _BusinesspageState extends State<Businesspage> {
             ),
             Row(
               children: [
-                Expanded(child: inputTextField(txtcontoller: txtCity)),
+                Expanded(child: inputTextField(txtcontoller: txtCity,isAddress: false)),
                 const SizedBox(
                   width: 20,
                 ),
-                Expanded(child: inputTextField(txtcontoller: txtState)),
+                Expanded(child: inputTextField(txtcontoller: txtState,isAddress: false)),
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 13,
             ),
             labelText_Box(name: "Zip/Postal Code"),
             const SizedBox(
               height: 10,
             ),
-            inputTextField(txtcontoller: txtZipcode),
+            inputTextField(txtcontoller: txtZipcode,isAddress: false),
             Spacer(),
             GestureDetector(
               onTap: () {
@@ -125,13 +125,13 @@ class _BusinesspageState extends State<Businesspage> {
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: button,
                     borderRadius: BorderRadius.circular(15)),
                 alignment: Alignment.center,
                 child: Text(
                   "Next",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: offwhite,
                       fontWeight: FontWeight.w400,
                       fontSize: 20),
                 ),
@@ -141,12 +141,13 @@ class _BusinesspageState extends State<Businesspage> {
               height: 10,
             ),
             Text(
-              "You can change these deatils at any time from Settings.",
-              style: TextStyle(color: Colors.blueGrey,letterSpacing: 0.5),
+              "  You can change these deatils at any time from Settings.",
+              style: TextStyle(color: Colors.blueGrey,fontSize: 12.2),
             )
           ],
         ),
       ),
+
     );
   }
 
