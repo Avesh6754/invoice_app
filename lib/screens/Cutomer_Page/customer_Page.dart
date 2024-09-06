@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:invoice_app/model/product_data.dart';
 import 'package:invoice_app/model/product_list.dart';
 import 'package:invoice_app/screens/Business_Page/component/businessText.dart';
+import 'package:invoice_app/screens/Product_Page/product_page.dart';
 import 'package:invoice_app/utils/color.dart';
 import 'package:invoice_app/utils/global.dart';
 
@@ -42,8 +43,8 @@ class _CustomerPageState extends State<CustomerPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Spacer(),
-                SingleChildScrollView(
-                  child: const Column(
+                const SingleChildScrollView(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
@@ -229,41 +230,7 @@ class _CustomerPageState extends State<CustomerPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                              showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.red,
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return SizedBox(
-                                      child: Column(
-                                        children: [
-                                          // ListView.builder(
-                                          //   itemBuilder: (context, index) =>
-                                          //       Card(
-                                          //     child: ListTile(
-                                          //       leading: Image.asset(
-                                          //           '${invoiceProduct[index].pro_Image}'),
-                                          //       title: Text(
-                                          //           "Name ${invoiceProduct[index].pro_title}"),
-                                          //       trailing: IconButton(
-                                          //           onPressed: () {
-                                          //             setState(() {
-                                          //               invoicecart.add(
-                                          //                   invoiceProduct[
-                                          //                       index]);
-                                          //             });
-                                          //           },
-                                          //           icon: Icon(Icons
-                                          //               .shopping_cart_checkout)),
-                                          //     ),
-                                          //   ),
-                                          // )
-                                        ],
-                                      ),
-                                    );
-                                  });
-                            });
+                              Navigator.of(context).pushNamed('/pro');
                           },
                           child: Container(
                             height: 50,
