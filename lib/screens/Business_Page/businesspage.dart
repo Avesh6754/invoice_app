@@ -67,7 +67,7 @@ class _BusinesspageState extends State<Businesspage> {
                                       hint: 'Mukesh')),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 13,
                           ),
                           Row(
@@ -135,7 +135,7 @@ class _BusinesspageState extends State<Businesspage> {
                               txtcontoller: txtAddress,
                               isAddress: false,
                               hint: 'A/204 Los Angels'),
-                          SizedBox(
+                          const SizedBox(
                             height: 13,
                           ),
                           Row(
@@ -175,7 +175,7 @@ class _BusinesspageState extends State<Businesspage> {
                               txtcontoller: txtZipcode,
                               isAddress: false,
                               hint: '395010'),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                         ],
@@ -203,7 +203,7 @@ class _BusinesspageState extends State<Businesspage> {
                               color: button,
                               borderRadius: BorderRadius.circular(15)),
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             "Next",
                             style: TextStyle(
                                 color: offwhite,
@@ -214,8 +214,8 @@ class _BusinesspageState extends State<Businesspage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  Text(
+                  const SizedBox(height: 10,),
+                  const Text(
                     "You can change these details at any time from Settings.",
                     style: TextStyle(
                         color: offlabel,

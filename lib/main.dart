@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invoice_app/utils/routes.dart';
 
 void main() {
-  runApp(My_Invoic());
+  runApp(const My_Invoic());
 }
 
 class My_Invoic extends StatelessWidget {

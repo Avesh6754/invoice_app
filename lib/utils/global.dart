@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app/model/product_data.dart';
-import 'package:invoice_app/screens/Business_Page/businesspage.dart';
-import 'package:invoice_app/screens/Cutomer_Page/customer_Page.dart';
 
-import '../screens/SplashScreen/slpash_screen.dart';
 
 List<Invoice>invoiceProduct=[];
 List invoicecart=[];

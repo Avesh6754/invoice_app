@@ -13,8 +13,10 @@ class _SlpashScreenState extends State<SlpashScreen> {
   @override
   Widget build(BuildContext context) {
     Timer.periodic(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       (timer) {
+
+        
         Navigator.of(context).pushReplacementNamed('/home');
       },
     );

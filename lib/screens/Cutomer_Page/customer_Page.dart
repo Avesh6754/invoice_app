@@ -42,7 +42,7 @@ class _CustomerPageState extends State<CustomerPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
+                const Spacer(),
                 const SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +85,7 @@ class _CustomerPageState extends State<CustomerPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         labelText_Box(name: "Customer"),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         GestureDetector(
@@ -125,7 +125,7 @@ class _CustomerPageState extends State<CustomerPage> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Row(
@@ -135,7 +135,7 @@ class _CustomerPageState extends State<CustomerPage> {
                             Expanded(child: labelText_Box(name: "  Due Date")),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(children: [
@@ -163,7 +163,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                   hint: '10/05/2023'),
                             ),
                           )),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Expanded(
@@ -191,7 +191,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                 )),
                           )
                         ]),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Row(
@@ -201,7 +201,7 @@ class _CustomerPageState extends State<CustomerPage> {
                             Expanded(child: labelText_Box(name: " Currency")),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
@@ -211,7 +211,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                     txtcontoller: txtInvoiceNumber,
                                     isAddress: false,
                                     hint: 'INV001')),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             Expanded(
@@ -221,11 +221,11 @@ class _CustomerPageState extends State<CustomerPage> {
                                     hint: 'INR')),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         labelText_Box(name: "Items"),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         GestureDetector(
@@ -256,22 +256,22 @@ class _CustomerPageState extends State<CustomerPage> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         labelText_Box(name: "Notes"),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         inputTextField(
                             txtcontoller: txtnote,
                             isAddress: true,
                             hint: 'I am glad to work with you'),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         labelText_Box(name: "Terms & Condition"),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         inputTextField(

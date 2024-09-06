@@ -7,9 +7,9 @@ import 'package:invoice_app/screens/Product_Page/product_page.dart';
 import '../screens/SplashScreen/slpash_screen.dart';
 
 Map<String,Widget Function(BuildContext context)> routes={
-  '/':(context)=>SlpashScreen(),
-  '/home':(context)=>Businesspage(),
-  '/cust':(context)=>CustomerPage(),
-  '/pro':(context)=>ProductPage(),
+  '/':(context)=>const SlpashScreen(),
+  '/home':(context)=>const Businesspage(),
+  '/cust':(context)=>const CustomerPage(),
+  '/pro':(context)=>const ProductPage(),
 
 };

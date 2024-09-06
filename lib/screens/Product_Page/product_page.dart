@@ -27,7 +27,7 @@ class _ProductPageState extends State<ProductPage> {
                                 index]);
                           });
                         },
-                        icon: Icon(Icons
+                        icon: const Icon(Icons
                             .shopping_cart_checkout)),
                   ),
             )
