@@ -228,7 +228,7 @@ class _CustomerPageState extends State<CustomerPage> {
                         const SizedBox(
                           height: 10,
                         ),
-                        GestureDetector(
+                      GestureDetector(
                           onTap: () {
                               Navigator.of(context).pushNamed('/pro');
                           },
