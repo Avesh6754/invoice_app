@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_app/screens/Product_Page/cartpage.dart';
+import 'package:invoice_app/utils/color.dart';
 
 import '../../utils/global.dart';
 
@@ -17,30 +17,34 @@ class _ProductPageState extends State<ProductPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('product page'),
+        leading: IconButton(onPressed: () {
+          Navigator.of(context).pushNamed('/cust');
+        }, icon: Icon(Icons.arrow_back)),
       ),
       body: SingleChildScrollView(
         child: Column(
+
           children: [
             ...List.generate(
               invoiceProduct.length,
               (index) => ListTile(
+                leading: CircleAvatar(
+                  radius: 25,
+                  child: Image.network('${invoiceProduct[index].pro_Image}'),
+                ),
                 title: Text(
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     "Name ${invoiceProduct[index].pro_title}"),
                 subtitle: Text('${invoiceProduct[index].pro_price}'),
-                trailing: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        invoicecart.add(index);
-                      });
-                    },
-                    icon: const Icon(Icons.shopping_cart_checkout)),
+                trailing: ElevatedButton(style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(button)),onPressed: () {
+                  invoicecart.add(invoiceProduct[index]);
+                }, child: Text("+  Add To Cart",style: TextStyle(color: offwhite),))
               ),
             ),
             ElevatedButton(onPressed: () {
-             Navigator.of(context).pushNamed('/cart');
-            }, child:Text('Cart'))
+              Navigator.of(context).pushNamed('/cust');
+            }, child: Text("Cart"))
           ],
         ),
       ),

@@ -228,34 +228,176 @@ class _CustomerPageState extends State<CustomerPage> {
                         const SizedBox(
                           height: 10,
                         ),
-                      GestureDetector(
-                          onTap: () {
-                              Navigator.of(context).pushNamed('/pro');
-                          },
-                          child: Container(
-                            height: 50,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: defaultbutton),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.add_circle,
-                                    color: button,
+                        (invoicecart.isEmpty)
+                            ? GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed('/pro');
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: defaultbutton),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.add_circle,
+                                          color: button,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "Add item Details",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                const Text(
-                                  "Add item Details",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            : Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    border: Border.all(
+                                        color: Colors.grey.shade400, width: 1)),
+                                child: Column(
+                                  children: [
+                                    ...List.generate(
+                                        invoicecart.length,
+                                        (index) => Column(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(15),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                          width: 150,
+                                                          child: Text(
+                                                            '${invoicecart[index].pro_title}',
+                                                            style: TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                          )),
+                                                      SizedBox(
+                                                        width: 20,
+                                                      ),
+                                                      Text(
+                                                          '${invoicecart[index].pro_price}',
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500)),
+                                                      SizedBox(
+                                                        height: 5,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      Alignment.bottomRight,
+                                                  child: Container(
+                                                    height: 40,
+                                                    width: 110,
+                                                    margin: EdgeInsets.only(
+                                                        right: 20),
+                                                    alignment: Alignment.center,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        border: Border.all(
+                                                            color:
+                                                                Colors.black54,
+                                                            width: 1)),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        IconButton(
+                                                            onPressed: () {
+                                                              setState(() {
+                                                              });
+                                                            },
+                                                            icon: const Icon(
+                                                              Icons.remove,
+                                                            )),
+                                                        Text(
+                                                          "${invoicecart[index].pro_qty}",
+                                                          style: const TextStyle(
+                                                              fontSize: 20),
+                                                        ),
+                                                        IconButton(
+                                                            onPressed: () {
+                                                              setState(() {
+                                                                invoicecart[index].pro_qty;
+
+                                                              });
+                                                            },
+                                                            icon: const Icon(
+                                                              Icons.add,
+                                                            )),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Divider(),
+                                              ],
+                                            )),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pushNamed('/pro');
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Icon(
+                                            Icons.add_circle,
+                                            color: button,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            "Add Another Item",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                color: button,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
+                              ),
                         const SizedBox(
                           height: 15,
                         ),

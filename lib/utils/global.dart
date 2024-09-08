@@ -3,7 +3,7 @@ import 'package:invoice_app/model/product_data.dart';
 
 
 List<Invoice>invoiceProduct=[];
-List invoicecart=[];
+List<Invoice>invoicecart=[];
 List addcart=[];
 
 //business page
