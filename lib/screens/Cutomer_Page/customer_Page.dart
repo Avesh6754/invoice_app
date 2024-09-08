@@ -348,9 +348,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                                         IconButton(
                                                             onPressed: () {
                                                               setState(() {
-                                                                invoicecart[
-                                                                        index]
-                                                                    .pro_qty;
+                                                                invoicecart[index].pro_qty = invoicecart[index].pro_qty! + 1;
                                                               });
                                                             },
                                                             icon: const Icon(
