@@ -12,7 +12,9 @@ class _CartpageState extends State<Cartpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Cart page'),
+      ),
       body: Column(children: [
         ...List.generate(invoicecart.length, (index)=>ListTile(
           title: Text("${invoicecart[index]}"),
