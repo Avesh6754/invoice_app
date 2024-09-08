@@ -5,18 +5,22 @@ import 'package:invoice_app/model/product_data.dart';
 List<Invoice>invoiceProduct=[];
 List<Invoice>invoicecart=[];
 List addcart=[];
+bool isContain=false;
+GlobalKey<FormState> fromkey = GlobalKey<FormState>();
 
 //business page
 
-TextEditingController txtBusinessname=TextEditingController();
-TextEditingController txtYourName=TextEditingController();
-TextEditingController txtGst=TextEditingController();
+TextEditingController txtBusinessname=TextEditingController(text: 'Maruti Fashion');
+TextEditingController txtYourName=TextEditingController(text: 'Mukesh Yadav');
+TextEditingController txtGst=TextEditingController(text: 'GNIV56853J');
 TextEditingController txtBusinessLoaction=TextEditingController(text: 'India');
-TextEditingController txtDatefounder=TextEditingController();
-TextEditingController txtAddress=TextEditingController();
-TextEditingController txtCity=TextEditingController();
-TextEditingController txtState=TextEditingController();
-TextEditingController txtZipcode=TextEditingController();
+TextEditingController txtDatefounder=TextEditingController(text: '20/10/2001');
+TextEditingController txtAddress=TextEditingController(text: 'A/204 KUberjiWorld punagem surat');
+TextEditingController txtCity=TextEditingController(text: 'Surat');
+TextEditingController txtState=TextEditingController(text: 'Gujarat');
+TextEditingController txtZipcode=TextEditingController(text: '395010m;lmk'
+
+);
 
 //invoice details
 
@@ -39,5 +43,15 @@ TextEditingController txtPostalcode=TextEditingController();
 TextEditingController txtCountry=TextEditingController(text: 'Indian');
 
 //bottom
+double Amount = 0;
+
+double payment() {
+  double ans = 0;
+  for (int i = 0; i < invoicecart.length; i++) {
+    ans = ans + invoicecart[i].pro_price;
+  }
+  return ans;
+}
+
 
 

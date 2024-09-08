@@ -17,7 +17,7 @@ class _SlpashScreenState extends State<SlpashScreen> {
       (timer) {
 
         
-        Navigator.of(context).pushReplacementNamed('/home');
+        Navigator.of(context).pushReplacementNamed('/onbord');
       },
     );
     return Scaffold(
@@ -37,7 +37,7 @@ class _SlpashScreenState extends State<SlpashScreen> {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
-                  color: Colors.blue),
+                  color: Colors.black54),
             )
           ],
         ),

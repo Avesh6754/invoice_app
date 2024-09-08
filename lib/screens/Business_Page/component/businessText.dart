@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app/utils/color.dart';
 
-TextField inputTextField(
+TextFormField inputTextField(
     {required TextEditingController txtcontoller, required bool isAddress,required String hint}) {
-  return TextField(
+  return TextFormField(
+    validator: (value) {
+      return value!.isEmpty?"This deatils is mandatory":null;
+    },
     controller: txtcontoller,
     maxLines: (isAddress) ? 3 : 1,
 
@@ -12,12 +15,15 @@ TextField inputTextField(
       hintStyle: TextStyle(color: Colors.grey.shade400
       ),
       border: const OutlineInputBorder(),
+      errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(color: Colors.red, width: 2)),
       enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey.shade500, width: 1.2),
           borderRadius: BorderRadius.circular(15)),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: const BorderSide(color: Colors.blue, width: 1.5)),
+          borderSide: const BorderSide(color:button, width: 1.5)),
     ),
   );
 }

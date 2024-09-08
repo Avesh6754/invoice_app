@@ -19,6 +19,7 @@ class CustomerPage extends StatefulWidget {
 }
 
 class _CustomerPageState extends State<CustomerPage> {
+
   @override
   void initState() {
     // TODO: implement initState
@@ -90,42 +91,50 @@ class _CustomerPageState extends State<CustomerPage> {
                           height: 10,
                         ),
                         GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled: true,
-                                  builder: (BuildContext context) {
-                                    return SizedBox(
-                                      child: customerDetails(context),
-                                    );
+                                onTap: () {
+                                  setState(() {
+                                    showModalBottomSheet(
+                                        context: context,
+                                        isScrollControlled: true,
+                                        builder: (BuildContext context) {
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: SizedBox(
+                                              child: customerDetails(context),
+                                            ),
+                                          );
+                                        });
                                   });
-                            });
-                          },
-                          child: Container(
-                            height: 50,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: defaultbutton),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.add_circle,
-                                    color: button,
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: defaultbutton),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {
+                                          setState(() {
+
+                                          });
+                                        },
+                                        icon: const Icon(
+                                          Icons.add_circle,
+                                          color: button,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "Add Customer Details",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
                                   ),
                                 ),
-                                const Text(
-                                  "Add Customer Details",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                              ),
                         const SizedBox(
                           height: 15,
                         ),
@@ -273,89 +282,122 @@ class _CustomerPageState extends State<CustomerPage> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.all(15),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
-                                                      Container(
-                                                          width: 150,
-                                                          child: Text(
-                                                            '${invoicecart[index].pro_title}',
-                                                            style: const TextStyle(
-                                                                fontSize: 17,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                            maxLines: 1,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                          )),
-                                                      const SizedBox(
-                                                        width: 20,
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                              width: 150,
+                                                              child: Text(
+                                                                '${invoicecart[index].pro_title}',
+                                                                style: const TextStyle(
+                                                                    fontSize:
+                                                                        17,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                              )),
+                                                          Text(
+                                                              '${(invoicecart[index].pro_price)}',
+                                                              style: const TextStyle(
+                                                                  fontSize: 17,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500)),
+                                                        ],
                                                       ),
-                                                      Text(
-                                                          '${invoicecart[index].pro_price}',
-                                                          style: const TextStyle(
-                                                              fontSize: 17,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500)),
-                                                      const SizedBox(
-                                                        height: 5,
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            '${invoicecart[index].pro_price} * ${invoicecart[index].pro_qty}',
+                                                            style: TextStyle(
+                                                                color:
+                                                                    offlabel),
+                                                          ),
+                                                          Container(
+                                                            height: 40,
+                                                            width: 110,
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
+                                                                border: Border.all(
+                                                                    color: Colors
+                                                                        .black54,
+                                                                    width: 1)),
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                IconButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      setState(
+                                                                          () {
+                                                                        if (invoicecart[index].pro_qty! >
+                                                                            1) {
+                                                                          invoicecart[index].pro_qty =
+                                                                              invoicecart[index].pro_qty! - 1;
+                                                                          Amount =
+                                                                              Amount - invoicecart[index].pro_price;
+                                                                        }
+                                                                      });
+                                                                    },
+                                                                    icon:
+                                                                        const Icon(
+                                                                      Icons
+                                                                          .remove,
+                                                                    )),
+                                                                Text(
+                                                                  "${invoicecart[index].pro_qty}",
+                                                                  style: const TextStyle(
+                                                                      fontSize:
+                                                                          20),
+                                                                ),
+                                                                IconButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      setState(
+                                                                          () {
+                                                                        invoicecart[index]
+                                                                            .pro_qty = invoicecart[index]
+                                                                                .pro_qty! +
+                                                                            1;
+                                                                        Amount =
+                                                                            Amount +
+                                                                                invoicecart[index].pro_price;
+                                                                      });
+                                                                    },
+                                                                    icon:
+                                                                        const Icon(
+                                                                      Icons.add,
+                                                                    )),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
+                                                      IconButton(onPressed: () {
+                                                        setState(() {
+                                                          invoicecart.removeAt(index);
+                                                        });
+                                                      }, icon: Icon(Icons.delete_outline_rounded,color: Colors.red,),)
                                                     ],
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      Alignment.bottomRight,
-                                                  child: Container(
-                                                    height: 40,
-                                                    width: 110,
-                                                    margin: EdgeInsets.only(
-                                                        right: 20),
-                                                    alignment: Alignment.center,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        border: Border.all(
-                                                            color:
-                                                                Colors.black54,
-                                                            width: 1)),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        IconButton(
-                                                            onPressed: () {
-                                                              setState(() {
-                                                                invoicecart[index].pro_qty;
-                                                              });
-                                                            },
-                                                            icon: const Icon(
-                                                              Icons.remove,
-                                                            )),
-                                                        Text(
-                                                          "${invoicecart[index].pro_qty}",
-                                                          style:
-                                                              const TextStyle(
-                                                                  fontSize: 20),
-                                                        ),
-                                                        IconButton(
-                                                            onPressed: () {
-                                                              setState(() {
-                                                                invoicecart[index].pro_qty = invoicecart[index].pro_qty! + 1;
-                                                              });
-                                                            },
-                                                            icon: const Icon(
-                                                              Icons.add,
-                                                            )),
-                                                      ],
-                                                    ),
                                                   ),
                                                 ),
                                                 Divider(),
@@ -373,6 +415,60 @@ class _CustomerPageState extends State<CustomerPage> {
                                     const SizedBox(
                                       height: 10,
                                     ),
+                                    Divider(),
+                                    Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'SubTotal',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20),
+                                          ),
+                                          Text(
+                                              '${(payment() + Amount).toInt()}'),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'GST (18%)-',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20),
+                                          ),
+                                          Text(
+                                              '${((payment() + Amount) * 18 / 100).toInt()}'),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Total Amount',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20),
+                                          ),
+                                          Text(
+                                              '${(((payment() + Amount) * 18 / 100) + (payment() + Amount)).toInt()}'),
+                                        ],
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
@@ -406,7 +502,9 @@ class _CustomerPageState extends State<CustomerPage> {
           Padding(
             padding: const EdgeInsets.all(15),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushNamed('/loti');
+              },
               child: Container(
                 height: 50,
                 width: double.infinity,

@@ -12,6 +12,7 @@ class Businesspage extends StatefulWidget {
 }
 
 class _BusinesspageState extends State<Businesspage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,157 +32,163 @@ class _BusinesspageState extends State<Businesspage> {
             Expanded(
               flex: 6,
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: labelText_Box(name: "Business Name")),
-                              Expanded(
-                                  child: labelText_Box(name: "  Your Name"))
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
+                child: Form(
+                  key: fromkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: labelText_Box(name: "Business Name")),
+                                Expanded(
+                                    child: labelText_Box(name: "  Your Name"))
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: inputTextField(
+                                        txtcontoller: txtBusinessname,
+                                        isAddress: false,
+                                        hint: 'Krishna Textile')),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Expanded(
+                                    child: inputTextField(
+                                        txtcontoller: txtYourName,
+                                        isAddress: false,
+                                        hint: 'Mukesh')),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 13,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(child: labelText_Box(name: "GSTIN")),
+                                Expanded(
+                                    child: labelText_Box(
+                                        name: "   Business Location"))
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: inputTextField(
+                                        txtcontoller: txtGst,
+                                        isAddress: false,
+                                        hint: 'GST556631AS')),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Expanded(
+                                    child: inputTextField(
+                                        txtcontoller: txtBusinessLoaction,
+                                        isAddress: false,
+                                        hint: 'Indian')),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 13,
+                            ),
+                            labelText_Box(name: "Date of Foundation"),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  setState(() async {
+                                    DateTime? dateTime = await showDatePicker(
+                                        context: context,
+                                        firstDate: DateTime(1990),
+                                        lastDate: DateTime(2100),
+                                        initialDate: DateTime.now());
+                                    if (dateTime != null) {
+                                      var datebirth =
+                                          '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+                                      txtDatefounder.text = datebirth;
+                                    }
+                                  });
+                                },
+                                child: AbsorbPointer(
+                                  absorbing: true,
                                   child: inputTextField(
-                                      txtcontoller: txtBusinessname,
+                                      txtcontoller: txtDatefounder,
                                       isAddress: false,
-                                      hint: 'Krishna Textile')),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                  child: inputTextField(
-                                      txtcontoller: txtYourName,
-                                      isAddress: false,
-                                      hint: 'Mukesh')),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 13,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(child: labelText_Box(name: "GSTIN")),
-                              Expanded(
-                                  child: labelText_Box(
-                                      name: "   Business Location"))
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: inputTextField(
-                                      txtcontoller: txtGst,
-                                      isAddress: false,
-                                      hint: 'GST556631AS')),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                  child: inputTextField(
-                                      txtcontoller: txtBusinessLoaction,
-                                      isAddress: false,
-                                      hint: 'Indian')),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 13,
-                          ),
-                          labelText_Box(name: "Date of Foundation"),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          GestureDetector(
-                              onTap: () {
-                                setState(() async {
-                                  DateTime? dateTime = await showDatePicker(
-                                      context: context,
-                                      firstDate: DateTime(1990),
-                                      lastDate: DateTime(2100),
-                                      initialDate: DateTime.now());
-                                  if (dateTime != null) {
-                                    var datebirth =
-                                        '${dateTime.day}/${dateTime.month}/${dateTime.year}';
-                                    txtDatefounder.text = datebirth;
-                                  }
-                                });
-                              },
-                              child: inputTextField(
-                                  txtcontoller: txtDatefounder,
-                                  isAddress: false,
-                                  hint: '20/10/2020')),
-                          const SizedBox(
-                            height: 13,
-                          ),
-                          labelText_Box(name: "Address line"),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          inputTextField(
-                              txtcontoller: txtAddress,
-                              isAddress: false,
-                              hint: 'A/204 Los Angels'),
-                          const SizedBox(
-                            height: 13,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(child: labelText_Box(name: "City")),
-                              Expanded(child: labelText_Box(name: "   State"))
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: inputTextField(
-                                      txtcontoller: txtCity,
-                                      isAddress: false,
-                                      hint: 'Surat')),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                  child: inputTextField(
-                                      txtcontoller: txtState,
-                                      isAddress: false,
-                                      hint: 'Gujarat')),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 13,
-                          ),
-                          labelText_Box(name: "Zip/Postal Code"),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          inputTextField(
-                              txtcontoller: txtZipcode,
-                              isAddress: false,
-                              hint: '395010'),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
+                                      hint: '20/10/2020'),
+                                )),
+                            const SizedBox(
+                              height: 13,
+                            ),
+                            labelText_Box(name: "Address line"),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            inputTextField(
+                                txtcontoller: txtAddress,
+                                isAddress: false,
+                                hint: 'A/204 Los Angels'),
+                            const SizedBox(
+                              height: 13,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(child: labelText_Box(name: "City")),
+                                Expanded(child: labelText_Box(name: "   State"))
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: inputTextField(
+                                        txtcontoller: txtCity,
+                                        isAddress: false,
+                                        hint: 'Surat')),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Expanded(
+                                    child: inputTextField(
+                                        txtcontoller: txtState,
+                                        isAddress: false,
+                                        hint: 'Gujarat')),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 13,
+                            ),
+                            labelText_Box(name: "Zip/Postal Code"),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            inputTextField(
+                                txtcontoller: txtZipcode,
+                                isAddress: false,
+                                hint: '395010'),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -194,7 +201,22 @@ class _BusinesspageState extends State<Businesspage> {
                           const EdgeInsets.only(right: 15, left: 15, top: 10),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushNamed('/cust');
+                          if (fromkey.currentState!.validate() )
+                            {
+                              Navigator.of(context).pushNamed('/cust');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text(
+                                    'Data Saved Successfully!',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  duration: Duration(seconds: 2),
+                                ),
+                              );
+                            }
+
                         },
                         child: Container(
                           height: 50,
@@ -214,13 +236,7 @@ class _BusinesspageState extends State<Businesspage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10,),
-                  const Text(
-                    "You can change these details at any time from Settings.",
-                    style: TextStyle(
-                        color: offlabel,
-                        fontSize: 13),
-                  )
+
                 ],
               ),
             ),
