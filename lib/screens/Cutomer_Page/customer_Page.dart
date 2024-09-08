@@ -8,6 +8,7 @@ import 'package:invoice_app/screens/Product_Page/product_page.dart';
 import 'package:invoice_app/utils/color.dart';
 import 'package:invoice_app/utils/global.dart';
 
+import 'component/another_item.dart';
 import 'component/cutomer_Details.dart';
 
 class CustomerPage extends StatefulWidget {
@@ -239,17 +240,17 @@ class _CustomerPageState extends State<CustomerPage> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
                                       color: defaultbutton),
-                                  child: Row(
+                                  child: const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.add_circle,
-                                          color: button,
-                                        ),
+                                      Icon(
+                                        Icons.add_circle,
+                                        color: button,
                                       ),
-                                      const Text(
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
                                         "Add item Details",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
@@ -281,8 +282,8 @@ class _CustomerPageState extends State<CustomerPage> {
                                                           width: 150,
                                                           child: Text(
                                                             '${invoicecart[index].pro_title}',
-                                                            style: TextStyle(
-                                                                fontSize: 20,
+                                                            style: const TextStyle(
+                                                                fontSize: 17,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500),
@@ -291,17 +292,17 @@ class _CustomerPageState extends State<CustomerPage> {
                                                                 TextOverflow
                                                                     .ellipsis,
                                                           )),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         width: 20,
                                                       ),
                                                       Text(
                                                           '${invoicecart[index].pro_price}',
-                                                          style: TextStyle(
-                                                              fontSize: 20,
+                                                          style: const TextStyle(
+                                                              fontSize: 17,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w500)),
-                                                      SizedBox(
+                                                      const SizedBox(
                                                         height: 5,
                                                       ),
                                                     ],
@@ -332,6 +333,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                                         IconButton(
                                                             onPressed: () {
                                                               setState(() {
+                                                                invoicecart[index].pro_qty;
                                                               });
                                                             },
                                                             icon: const Icon(
@@ -339,14 +341,16 @@ class _CustomerPageState extends State<CustomerPage> {
                                                             )),
                                                         Text(
                                                           "${invoicecart[index].pro_qty}",
-                                                          style: const TextStyle(
-                                                              fontSize: 20),
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 20),
                                                         ),
                                                         IconButton(
                                                             onPressed: () {
                                                               setState(() {
-                                                                invoicecart[index].pro_qty;
-
+                                                                invoicecart[
+                                                                        index]
+                                                                    .pro_qty;
                                                               });
                                                             },
                                                             icon: const Icon(
@@ -359,40 +363,16 @@ class _CustomerPageState extends State<CustomerPage> {
                                                 Divider(),
                                               ],
                                             )),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.of(context).pushNamed('/pro');
                                       },
-                                      child: const Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Icon(
-                                            Icons.add_circle,
-                                            color: button,
-                                            size: 30,
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            "Add Another Item",
-                                            style: TextStyle(
-                                                fontSize: 25,
-                                                color: button,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                        ],
-                                      ),
+                                      child: add_another_item(),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                   ],

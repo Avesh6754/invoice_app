@@ -19,7 +19,7 @@ class _ProductPageState extends State<ProductPage> {
         title: Text('product page'),
         leading: IconButton(onPressed: () {
           Navigator.of(context).pushNamed('/cust');
-        }, icon: Icon(Icons.arrow_back)),
+        }, icon: const Icon(Icons.arrow_back)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -37,14 +37,12 @@ class _ProductPageState extends State<ProductPage> {
                     overflow: TextOverflow.ellipsis,
                     "Name ${invoiceProduct[index].pro_title}"),
                 subtitle: Text('${invoiceProduct[index].pro_price}'),
-                trailing: ElevatedButton(style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(button)),onPressed: () {
+                trailing: ElevatedButton(style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(button)),onPressed: () {
                   invoicecart.add(invoiceProduct[index]);
-                }, child: Text("+  Add To Cart",style: TextStyle(color: offwhite),))
+                }, child: const Text("+  Add To Cart",style: TextStyle(color: offwhite),))
               ),
             ),
-            ElevatedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/cust');
-            }, child: Text("Cart"))
+
           ],
         ),
       ),
