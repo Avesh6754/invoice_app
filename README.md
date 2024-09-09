@@ -133,9 +133,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   <img src="https://github.com/user-attachments/assets/9b28dcad-dc98-44ec-9b24-8df1950314ef" width="22%" Height="35%">
 
-  <img src="https://github.com/user-attachments/assets/232e5b94-9c9e-4f98-aef6-ecedbb7e49c4" width="22%" Height="35%">
-
-
   <img src="https://github.com/user-attachments/assets/e5aaa44f-79c9-4816-9c87-c5815e1f5800" width="22%" Height="35%">
   </p>
 
