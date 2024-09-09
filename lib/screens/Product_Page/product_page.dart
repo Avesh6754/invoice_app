@@ -44,7 +44,7 @@ class _ProductPageState extends State<ProductPage> {
             },
             icon: Icon(
               Icons.search,
-              color: Colors.white,
+
             ),
           )
         ],
