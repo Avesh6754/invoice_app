@@ -503,7 +503,7 @@ class _CustomerPageState extends State<CustomerPage> {
             padding: const EdgeInsets.all(15),
             child: GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed('/loti');
+                Navigator.of(context).pushNamed('/pdf');
               },
               child: Container(
                 height: 50,

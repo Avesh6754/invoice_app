@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app/screens/Business_Page/businesspage.dart';
 import 'package:invoice_app/screens/Cutomer_Page/customer_Page.dart';
-import 'package:invoice_app/screens/Lottie/lottie_page.dart';
+
 import 'package:invoice_app/screens/OnboardingScreen/onboardingscreen.dart';
 import 'package:invoice_app/screens/Pdf_Screen/pdf_screen.dart';
 
@@ -18,7 +18,7 @@ Map<String,Widget Function(BuildContext context)> routes={
   '/cust':(context)=>const CustomerPage(),
   '/pro':(context)=>const ProductPage(),
   '/search':(context)=>const Searchpage(),
-  '/loti':(context)=>const LottiePage(),
+  // '/loti':(context)=>const LottiePage(),
   '/pdf':(context)=>const PdfView(),
 
 
