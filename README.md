@@ -1,6 +1,5 @@
-# invoice_app
+<h1 align="center">Invoice_app</h1>
 
-A new Flutter project.
 # Invoice App
 
 Invoice App is a Flutter application designed for creating and managing invoices efficiently. The app allows users to add products, generate detailed invoices, and export them as PDF files for easy sharing and printing. It's ideal for small business owners, freelancers, and anyone in need of reliable billing solutions.
