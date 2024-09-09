@@ -15,7 +15,7 @@ Map<String,Widget Function(BuildContext context)> routes={
   '/':(context)=>const SlpashScreen(),
   '/onbord':(context)=>OnbordingPage(),
   '/home':(context)=>const Businesspage(),
-  
+
   '/cust':(context)=>const CustomerPage(),
   '/pro':(context)=>const ProductPage(),
   '/search':(context)=>const Searchpage(),
