@@ -19,7 +19,6 @@ class CustomerPage extends StatefulWidget {
 }
 
 class _CustomerPageState extends State<CustomerPage> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -91,50 +90,53 @@ class _CustomerPageState extends State<CustomerPage> {
                           height: 10,
                         ),
                         GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    showModalBottomSheet(
-                                        context: context,
-                                        isScrollControlled: true,
-                                        builder: (BuildContext context) {
-                                          return SingleChildScrollView(
-                                            scrollDirection: Axis.vertical,
-                                            child: SizedBox(
-                                              child: customerDetails(context),
-                                            ),
-                                          );
-                                        });
-                                  });
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: defaultbutton),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          setState(() {
-
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.add_circle,
-                                          color: button,
+                          onTap: () {
+                            setState(() {
+                              showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (BuildContext context) {
+                                    return SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: SizedBox(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              bottom: MediaQuery.of(context)
+                                                  .viewInsets
+                                                  .bottom),
+                                          child: customerDetails(context),
                                         ),
                                       ),
-                                      const Text(
-                                        "Add Customer Details",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
+                                    );
+                                  });
+                            });
+                          },
+                          child: Container(
+                            height: 50,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: defaultbutton),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(
+                                    Icons.add_circle,
+                                    color: button,
                                   ),
                                 ),
-                              ),
+                                const Text(
+                                  "Add Customer Details",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                         const SizedBox(
                           height: 15,
                         ),
@@ -283,15 +285,22 @@ class _CustomerPageState extends State<CustomerPage> {
                                                   padding:
                                                       const EdgeInsets.all(15),
                                                   child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
                                                                 .spaceBetween,
                                                         children: [
-                                                          Container(
-                                                              width: 150,
+                                                          CircleAvatar(
+                                                            backgroundImage:
+                                                                NetworkImage(
+                                                                    '${invoicecart[index].pro_Image}'),
+                                                          ),
+                                                          SizedBox(
+                                                              width: 180,
                                                               child: Text(
                                                                 '${invoicecart[index].pro_title}',
                                                                 style: const TextStyle(
@@ -306,7 +315,7 @@ class _CustomerPageState extends State<CustomerPage> {
                                                                         .ellipsis,
                                                               )),
                                                           Text(
-                                                              '${(invoicecart[index].pro_price)}',
+                                                              '\$${(invoicecart[index].pro_price)}',
                                                               style: const TextStyle(
                                                                   fontSize: 17,
                                                                   fontWeight:
@@ -340,9 +349,6 @@ class _CustomerPageState extends State<CustomerPage> {
                                                                         .black54,
                                                                     width: 1)),
                                                             child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
                                                               children: [
                                                                 IconButton(
                                                                     onPressed:
@@ -367,36 +373,43 @@ class _CustomerPageState extends State<CustomerPage> {
                                                                   "${invoicecart[index].pro_qty}",
                                                                   style: const TextStyle(
                                                                       fontSize:
-                                                                          20),
+                                                                          15),
                                                                 ),
-                                                                IconButton(
-                                                                    onPressed:
-                                                                        () {
-                                                                      setState(
-                                                                          () {
-                                                                        invoicecart[index]
-                                                                            .pro_qty = invoicecart[index]
-                                                                                .pro_qty! +
-                                                                            1;
-                                                                        Amount =
-                                                                            Amount +
-                                                                                invoicecart[index].pro_price;
-                                                                      });
-                                                                    },
-                                                                    icon:
-                                                                        const Icon(
-                                                                      Icons.add,
-                                                                    )),
+                                                                Expanded(
+                                                                  child: IconButton(
+                                                                      onPressed: () {
+                                                                        setState(
+                                                                            () {
+                                                                          invoicecart[index].pro_qty =
+                                                                              invoicecart[index].pro_qty! + 1;
+                                                                          Amount =
+                                                                              Amount + invoicecart[index].pro_price;
+                                                                        });
+                                                                      },
+                                                                      icon: const Icon(
+                                                                        Icons
+                                                                            .add,
+                                                                      )),
+                                                                ),
                                                               ],
                                                             ),
                                                           ),
                                                         ],
                                                       ),
-                                                      IconButton(onPressed: () {
-                                                        setState(() {
-                                                          invoicecart.removeAt(index);
-                                                        });
-                                                      }, icon: Icon(Icons.delete_outline_rounded,color: Colors.red,),)
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            invoicecart
+                                                                .removeAt(
+                                                                    index);
+                                                          });
+                                                        },
+                                                        icon: Icon(
+                                                          Icons
+                                                              .delete_outline_rounded,
+                                                          color: Colors.red,
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                 ),

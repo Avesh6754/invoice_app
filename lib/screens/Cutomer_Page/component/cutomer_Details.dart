@@ -6,7 +6,6 @@ import '../../Business_Page/component/businessText.dart';
 
 Form customerDetails(BuildContext context) {
   return Form(
-    key: fromkey,
     child: Padding(
       padding: const EdgeInsets.all(15),
       child: Column(
@@ -95,8 +94,7 @@ Form customerDetails(BuildContext context) {
           const SizedBox(height: 15,),
           GestureDetector(
             onTap: () {
-              if (fromkey.currentState!.validate() )
-              {
+
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
@@ -109,7 +107,7 @@ Form customerDetails(BuildContext context) {
                     duration: Duration(seconds: 2),
                   ),
                 );
-              }
+
             },
             child: Container(
               height: 50,

@@ -33,7 +33,7 @@ class _BusinesspageState extends State<Businesspage> {
               flex: 6,
               child: SingleChildScrollView(
                 child: Form(
-                  key: fromkey,
+
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -201,8 +201,7 @@ class _BusinesspageState extends State<Businesspage> {
                           const EdgeInsets.only(right: 15, left: 15, top: 10),
                       child: GestureDetector(
                         onTap: () {
-                          if (fromkey.currentState!.validate() )
-                            {
+
                               Navigator.of(context).pushNamed('/cust');
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -213,9 +212,7 @@ class _BusinesspageState extends State<Businesspage> {
                                     style: TextStyle(fontSize: 16),
                                   ),
                                   duration: Duration(seconds: 2),
-                                ),
-                              );
-                            }
+                                ),);
 
                         },
                         child: Container(

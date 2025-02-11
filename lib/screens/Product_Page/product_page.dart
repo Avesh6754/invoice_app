@@ -54,36 +54,6 @@ class _ProductPageState extends State<ProductPage> {
       ),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(top: 10),
-            margin: EdgeInsets.only(top: 10),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: categories
-                    .map(
-                      (pro_category) => FilterChip(
-
-                        selected: selectedCategories.contains(pro_category),
-                        label: Text(pro_category),
-                        onSelected: (selected) {
-                          setState(
-                            () {
-                              if (selected) {
-                                selectedCategories.add(pro_category);
-                              } else {
-                                selectedCategories.remove(pro_category);
-                              }
-                            },
-                          );
-                        },
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-          ),
           Expanded(
             child: ListView.builder(
               itemCount: filterProducts.length,
@@ -111,13 +81,13 @@ class _ProductPageState extends State<ProductPage> {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(const SnackBar(
                                 content: Text("Product Added Successful"),
-                                duration: Duration(seconds: 2),
+                                duration: Duration(seconds: 1),
                               ));
                             } else {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(const SnackBar(
                                 content: Text("Product Already Added"),
-                                duration: Duration(seconds: 2),
+                                duration: Duration(seconds: 1),
                               ));
                             }
                           });

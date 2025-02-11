@@ -1,46 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app/model/product_data.dart';
 
-
-List<Invoice>invoiceProduct=[];
-List<Invoice>invoicecart=[];
-List addcart=[];
-bool isContain=false;
-GlobalKey<FormState> fromkey = GlobalKey<FormState>();
+List<Invoice> invoiceProduct = [];
+List<Invoice> invoicecart = [];
+List addcart = [];
+bool isContain = false;
 
 //business page
 
-TextEditingController txtBusinessname=TextEditingController(text: 'Maruti Fashion');
-TextEditingController txtYourName=TextEditingController(text: 'Mukesh Yadav');
-TextEditingController txtGst=TextEditingController(text: 'GNIV56853J');
-TextEditingController txtBusinessLoaction=TextEditingController(text: 'India');
-TextEditingController txtDatefounder=TextEditingController(text: '20/10/2001');
-TextEditingController txtAddress=TextEditingController(text: 'A/204 KUberjiWorld punagem surat');
-TextEditingController txtCity=TextEditingController(text: 'Surat');
-TextEditingController txtState=TextEditingController(text: 'Gujarat');
-TextEditingController txtZipcode=TextEditingController(text: '395010m;lmk'
-
-);
+TextEditingController txtBusinessname = TextEditingController();
+TextEditingController txtYourName = TextEditingController();
+TextEditingController txtGst = TextEditingController();
+TextEditingController txtBusinessLoaction = TextEditingController();
+TextEditingController txtDatefounder = TextEditingController();
+TextEditingController txtAddress = TextEditingController();
+TextEditingController txtCity = TextEditingController();
+TextEditingController txtState = TextEditingController();
+TextEditingController txtZipcode = TextEditingController();
 
 //invoice details
 
-TextEditingController txtinvoice=TextEditingController();
-TextEditingController txtDueDate=TextEditingController();
-TextEditingController txtInvoiceNumber=TextEditingController();
-TextEditingController txtCurrency=TextEditingController();
-TextEditingController txtnote=TextEditingController();
-TextEditingController txtTerms=TextEditingController();
+TextEditingController txtinvoice = TextEditingController();
+TextEditingController txtDueDate = TextEditingController();
+TextEditingController txtInvoiceNumber = TextEditingController();
+TextEditingController txtCurrency = TextEditingController();
+TextEditingController txtnote = TextEditingController();
+TextEditingController txtTerms = TextEditingController();
 
 // cutsomer details
 
-TextEditingController txtcustomer=TextEditingController();
-TextEditingController txtCustGst=TextEditingController();
-TextEditingController txtPLaceofsupply=TextEditingController();
-TextEditingController txtAddressline=TextEditingController();
-TextEditingController txtCustomerCity=TextEditingController();
-TextEditingController txtCustomerState=TextEditingController();
-TextEditingController txtPostalcode=TextEditingController();
-TextEditingController txtCountry=TextEditingController(text: 'Indian');
+TextEditingController txtcustomer = TextEditingController();
+TextEditingController txtCustGst = TextEditingController();
+TextEditingController txtPLaceofsupply = TextEditingController();
+TextEditingController txtAddressline = TextEditingController();
+TextEditingController txtCustomerCity = TextEditingController();
+TextEditingController txtCustomerState = TextEditingController();
+TextEditingController txtPostalcode = TextEditingController();
+TextEditingController txtCountry = TextEditingController(text: 'Indian');
 
 //bottom
 double Amount = 0;
@@ -52,6 +48,3 @@ double payment() {
   }
   return ans;
 }
-
-
-

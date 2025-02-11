@@ -15,8 +15,6 @@ class _SlpashScreenState extends State<SlpashScreen> {
     Timer.periodic(
       const Duration(seconds: 3),
       (timer) {
-
-        
         Navigator.of(context).pushReplacementNamed('/onbord');
       },
     );
